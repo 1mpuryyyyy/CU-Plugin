@@ -33,17 +33,33 @@ function removeUnwantedCourses() {
         "Физическая культура",
         "Физическая культура. Рефераты"
     ];
-
-    const courseElements = document.querySelectorAll('.course-card');
-    courseElements.forEach(courseElement => {
-        const courseTitleElement = courseElement.querySelector('.course-card__title');
-        if (courseTitleElement) {
-            const courseTitle = courseTitleElement.innerText.trim();
-            if (unwantedCourses.includes(courseTitle)) {
-                courseElement.closest('li').remove();
+    
+    if (window.location.href.includes('courses/view')) {
+        const courseElements = document.querySelectorAll('.course-card');
+        courseElements.forEach(courseElement => {
+            const courseTitleElement = courseElement.querySelector('.course-card__title');
+            if (courseTitleElement) {
+                const courseTitle = courseTitleElement.innerText.trim();
+                if (unwantedCourses.includes(courseTitle)) {
+                    courseElement.closest('li').remove();
+                }
             }
-        }
-    });
+        courseElement.classList.add("turned-on");
+        });
+    } 
+    if (window.location.href.includes('tasks/actual-student-tasks')){
+        const listItems2024 = document.querySelectorAll('tr');
+        listItems2024.forEach(item => {
+            const text = item.textContent;
+
+            if (text.includes("Seminar") ||
+                text.includes("Суммарная оценка за аудиторную работу") ||
+                text.includes("Посещение") ||
+                text.includes("Пересдача")) {
+                item.remove();
+            }
+        });
+    }
 }
 
 // Функция добавления обработчика правого клика
@@ -62,7 +78,7 @@ function addRightClickHandlers() {
         li.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             const isCompleted = !this.classList.toggle('completed');
-            
+
             chrome.storage.local.set({ [courseKey]: isCompleted });
         });
 

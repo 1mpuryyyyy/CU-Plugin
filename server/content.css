@@ -4,7 +4,7 @@ li {
     transition: border-color 0.2s;
 }
 
-li:hover::after {
+.turned-on:hover::after {
     content: "ПКМ, чтобы отметить";
     position: absolute;
     right: 5px;
