@@ -14,7 +14,7 @@
 - Клонируйте репозиторий с помощью команды:
 
    ```bash
-   git clone <URL репозитория>
+   git clone (https://github.com/1mpuryyyyy/CU-Plugin.git)
    ```
 ### 2. Установить расширение в Chrome
 - Откройте Google Chrome и перейдите по следующему адресу:
