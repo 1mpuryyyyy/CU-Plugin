@@ -1,0 +1,95 @@
+:root {
+    --dm-color: #d7cde2;
+    --dm-color-dark: #9b93a3;
+    --dm-bg-color: #0a0a17;
+    --dm-gb-color-hover: #3e3e3e;
+    --dm-gb-color-card: #2d2d2d;
+    --dm-color-a: #1b77ef;
+}
+
+li {
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.turned-on:hover::after {
+    content: "ПКМ, чтобы отметить";
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    font-size: 12px;
+    color: #666;
+    background: rgba(255,255,255,0.9);
+    padding: 2px 5px;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+li.completed {
+    border: 1px solid rgb(90, 90, 90) !important;
+    border-radius: 15%;
+}
+
+/* Для темной темы */
+body {
+    background-color: var(--dm-bg-color);
+    color: var(--dm-color) !important;
+  }
+/* Темный текст */
+p, span, a, label, button[tuiIconButton][data-size][data-appearance], button[_ngcontent-ng-c3183866858], button[_ngcontent-ng-c3303389534]{
+color: var(--dm-color-dark) !important;
+}
+/* Текст светлее */
+h1, h2, h3, h4, h5, h6, [_ngcontent-ng-c405177856], .t-wrapper, [_ngcontent-ng-c1584974013], [_ngcontent-ng-c2996595539], .static-content-top__header[_ngcontent-ng-c3183866858], div, button[_ngcontent-ng-c4074958639][tuiappearance][tuiicons][tuibutton], tui-badge[tuiAppearance][data-appearance=success], button[_ngcontent-ng-c3460380658], [tuiAppearance][data-appearance=icon]:before, .tui-segmented_active, .sidebar__segmented-button, span[_ngcontent-ng-c1458012882], tui-badge[tuiAppearance][data-appearance=error]{
+color: var(--dm-color) !important;
+}
+
+/* Основной background */
+[_nghost-ng-c3937433658], [_nghost-ng-c44961361], [_nghost-ng-c44961361], [_ngcontent-ng-c3183866858], .static-content-top__header[_ngcontent-ng-c3183866858], .tui-segmented_active, .sidebar__segmented[data-size=m][_ngcontent-ng-c590479472]:before {
+    background-color: var(--dm-bg-color) !important;
+}
+/* Background для карточек или инпутов, светлее */
+.island[_ngcontent-ng-c1035888269], .file[_ngcontent-ng-c2586555880], [_nghost-ng-c452864359], [_nghost-ng-c2891162233], .notification[_ngcontent-ng-c606372835], .notification-separator__text[_ngcontent-ng-c3556577549]  {
+    background-color: var(--dm-gb-color-card) !important;
+    color: var(--dm-color) !important;
+}
+/* Background для hover эффектов */
+.t-wrapper[_ngcontent-ng-c1713417255]:hover > .t-header_hoverable[_ngcontent-ng-c1713417255], .file[_ngcontent-ng-c2586555880]:hover {
+    background-color: var(--dm-gb-color-hover) !important;
+}
+/* Навбар слева */
+[tuiCheckbox][tuiCheckbox], [tuiCheckbox][tuiCheckbox]._no-hover,  [tuiCheckbox]:checked:before, [tuiCheckbox]:before, [tuiCheckbox][tuiCheckbox]:before, [tuiCheckbox]:disabled{
+    border-color: var(--dm-color-dark) !important;
+    color: var(--dm-color-dark) !important; 
+    --cu-checkbox-border-color: var(var(--dm-color-dark)) !important;
+}
+/* радио инпуты */
+[tuiWrapper][data-appearance=textfield]:after {
+    border: 1px solid var(--dm-color) !important;
+}
+/*  */
+[_ngcontent-ng-c530767391] {
+    color: var(--dm-color) !important;
+    visibility: visible !important;
+}
+/* Ссылка приложенной работы */
+span[_ngcontent-ng-c700713718] {
+    color: var(--dm-color-a) !important;
+}
+
+/* Сводная успеваемость по предметам */
+[_nghost-ng-c4079261847], able.cu-table[data-size] tbody td, table.cu-table thead .t-sort, [_ngcontent-ng-c959653214] {
+    background: none !important;
+    color: var(--dm-color) !important;
+}
+/* Шапка сводной успеваемости */
+table.cu-table thead th, table.cu-table thead th:not(:last-of-type):not(._border-right-none), .left[_nghost-ng-c2719278132] .message-content[_ngcontent-ng-c2719278132], [tuiAppearance][data-appearance=textfield] {
+    border-right: none !important;
+    backdrop-filter: blur(5px) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--dm-color) !important;
+}
+.icon_read[_ngcontent-ng-c1762129006] {
+    color: #477df9 !important;
+}
