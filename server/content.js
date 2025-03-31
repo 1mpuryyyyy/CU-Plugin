@@ -34,14 +34,17 @@ function removeUnwantedCourses() {
         "Физическая культура",
         "Физическая культура. Рефераты"
     ];
-    
     if (window.location.href.includes('courses/view')) {
+        console.log(1)
         const courseElements = document.querySelectorAll('.course-card');
         courseElements.forEach(courseElement => {
+            console.log(2)
             const courseTitleElement = courseElement.querySelector('.course-card__title');
             if (courseTitleElement) {
+                console.log(3)
                 const courseTitle = courseTitleElement.innerText.trim();
                 if (unwantedCourses.includes(courseTitle)) {
+                    console.log(4)
                     courseElement.closest('li').remove();
                 }
             }
@@ -89,43 +92,36 @@ function addRightClickHandlers() {
 
 // Основная функция
 function cleanAndAddRightClick() {
-    removeUnwantedCourses();
-    addRightClickHandlers();
+    const observer = new MutationObserver((mutations, observer) => {
+        const courseElements = document.querySelectorAll('.course-card');
+        if (courseElements.length > 0) {
+            removeUnwantedCourses();
+            addRightClickHandlers();
+            observer.disconnect(); 
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 
-// Инициализация при загрузке страницы
-chrome.storage.sync.get(["autoClean"], (data) => {
+// Проверяем autoClean при загрузке страницы
+chrome.storage.local.get("autoClean", (data) => {
     if (data.autoClean) {
         cleanAndAddRightClick();
-    }
+    } 
 });
 
-// Слушаем изменения состояния autoClean в хранилище
-chrome.storage.onChanged.addListener((changes, areaName) => {
-    // Проверяем изменения в значении autoClean
-    if (areaName === "sync" && "autoClean" in changes) {
-        const autoCleanEnabled = changes.autoClean.newValue;
-        if (autoCleanEnabled) {
-            cleanAndAddRightClick();
-        }
-    }
-});
-
-// Обработчик сообщений от background.js
+// Слушаем команды от background.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "cleanAndAddRightClick") {
-        cleanAndAddRightClick();
-    }
-});
-
-// Очистка состояний
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "clearCheckboxes") {
-        document.querySelectorAll('.ng-star-inserted.has-right-click.completed').forEach(course => {
-            course.classList.remove('completed');
-            const courseTitle = course.querySelector('.course-card__title').innerText.trim();
-            const courseKey = 'completed_' + courseTitle;
-            chrome.storage.local.remove(courseKey); 
-        }); 
+        chrome.storage.local.get("autoClean", (data) => {
+            if (data.autoClean) {
+                removeUnwantedCourses();
+                addRightClickHandlers();
+            } else {
+                window.location.reload(); 
+            }
+        });
+        sendResponse({ success: true });
     }
 });

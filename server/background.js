@@ -1,7 +1,12 @@
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "cleanCourses") {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.tabs.sendMessage(tabs[0].id, { action: "cleanAndAddRightClick" });
-        });
-    }
+chrome.runtime.onStartup.addListener(() => {
+
+    chrome.storage.local.get("autoClean", (data) => {
+        if (data.autoClean) {
+            chrome.tabs.query({}, (tabs) => {
+                tabs.forEach((tab) => {
+                    chrome.tabs.sendMessage(tab.id, { action: "cleanAndAddRightClick" });
+                });
+            });
+        }
+    });
 });

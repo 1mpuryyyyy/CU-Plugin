@@ -93,3 +93,8 @@ table.cu-table thead th, table.cu-table thead th:not(:last-of-type):not(._border
 .icon_read[_ngcontent-ng-c1762129006] {
     color: #477df9 !important;
 }
+
+tui-root, [_nghost-ng-c4060465326] {
+    background-color: var(--dm-bg-color) !important;
+    border-image: none !important;
+}
