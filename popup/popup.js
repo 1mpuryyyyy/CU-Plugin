@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (clearStatesButton) {
         clearStatesButton.addEventListener("click", () => {
             chrome.storage.local.clear();
-            alert("Состояния сброшены!");
         });
     }
 });

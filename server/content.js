@@ -1,5 +1,6 @@
 // Функция для удаления нежелательных курсов
 function removeUnwantedCourses() {
+    // Список нежелательных курсов
     const unwantedCourses = [
         "Онбординг по платформам ЦУ",
         "Онбординговая неделя",
@@ -34,17 +35,14 @@ function removeUnwantedCourses() {
         "Физическая культура",
         "Физическая культура. Рефераты"
     ];
+
     if (window.location.href.includes('courses/view')) {
-        console.log(1)
         const courseElements = document.querySelectorAll('.course-card');
         courseElements.forEach(courseElement => {
-            console.log(2)
             const courseTitleElement = courseElement.querySelector('.course-card__title');
             if (courseTitleElement) {
-                console.log(3)
                 const courseTitle = courseTitleElement.innerText.trim();
                 if (unwantedCourses.includes(courseTitle)) {
-                    console.log(4)
                     courseElement.closest('li').remove();
                 }
             }
@@ -66,7 +64,7 @@ function removeUnwantedCourses() {
     }
 }
 
-// Функция добавления обработчика правого клика
+// Функция добавления обработчика правого клика на курс
 function addRightClickHandlers() {
     document.querySelectorAll('li').forEach(li => {
 
@@ -78,7 +76,6 @@ function addRightClickHandlers() {
 
         const courseKey = 'completed_' + titleElement.innerText.trim();
 
-        // Добавляем обработчик правого клика
         li.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             const isCompleted = !this.classList.toggle('completed');
@@ -90,7 +87,7 @@ function addRightClickHandlers() {
     });
 }
 
-// Основная функция
+// Основная функция при загрузке страницы
 function cleanAndAddRightClick() {
     const observer = new MutationObserver((mutations, observer) => {
         const courseElements = document.querySelectorAll('.course-card');
@@ -110,8 +107,7 @@ chrome.storage.local.get("autoClean", (data) => {
         cleanAndAddRightClick();
     } 
 });
-
-// Слушаем команды от background.js
+// Обработчик сообщений от popup.js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "cleanAndAddRightClick") {
         chrome.storage.local.get("autoClean", (data) => {

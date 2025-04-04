@@ -41,12 +41,12 @@ p, span, a, label, button[tuiIconButton][data-size][data-appearance], button[_ng
 color: var(--dm-color-dark) !important;
 }
 /* Текст светлее */
-h1, h2, h3, h4, h5, h6, [_ngcontent-ng-c405177856], .t-wrapper, [_ngcontent-ng-c1584974013], [_ngcontent-ng-c2996595539], .static-content-top__header[_ngcontent-ng-c3183866858], div, button[_ngcontent-ng-c4074958639][tuiappearance][tuiicons][tuibutton], tui-badge[tuiAppearance][data-appearance=success], button[_ngcontent-ng-c3460380658], [tuiAppearance][data-appearance=icon]:before, .tui-segmented_active, .sidebar__segmented-button, span[_ngcontent-ng-c1458012882], tui-badge[tuiAppearance][data-appearance=error]{
+h1, h2, h3, h4, h5, h6, [_ngcontent-ng-c405177856], .t-wrapper, [_ngcontent-ng-c1584974013], [_ngcontent-ng-c2996595539], .static-content-top__header[_ngcontent-ng-c3183866858], div, button[_ngcontent-ng-c4074958639][tuiappearance][tuiicons][tuibutton], tui-badge[tuiAppearance][data-appearance=success], button[_ngcontent-ng-c3460380658], [tuiAppearance][data-appearance=icon]:before, .tui-segmented_active, .sidebar__segmented-button, span[_ngcontent-ng-c1458012882], tui-badge[tuiAppearance][data-appearance=error], tui-badge[tuiAppearance][data-appearance=info]{
 color: var(--dm-color) !important;
 }
 
 /* Основной background */
-[_nghost-ng-c3937433658], [_nghost-ng-c44961361], [_nghost-ng-c44961361], [_ngcontent-ng-c3183866858], .static-content-top__header[_ngcontent-ng-c3183866858], .tui-segmented_active, .sidebar__segmented[data-size=m][_ngcontent-ng-c590479472]:before {
+[_nghost-ng-c3937433658], [_nghost-ng-c44961361], [_nghost-ng-c44961361], [_ngcontent-ng-c3183866858], .static-content-top__header[_ngcontent-ng-c3183866858], .tui-segmented_active, .sidebar__segmented[data-size=m][_ngcontent-ng-c590479472]:before, .file[_ngcontent-ng-c843376289],.nav[_ngcontent-ng-c3054185212]  {
     background-color: var(--dm-bg-color) !important;
 }
 /* Background для карточек или инпутов, светлее */
